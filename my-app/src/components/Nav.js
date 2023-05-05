@@ -79,7 +79,7 @@ class Nav extends Component {
                 <a href="#!">
                   <div>
                   <FontAwesomeIcon icon={faComment} /> 새로운 댓글
-                    <span className="pull-right text-muted small">4 minutes ago</span>
+                    <span className="pull-right text-muted small">5 minutes ago</span>
                   </div>
                 </a>
               </li>
