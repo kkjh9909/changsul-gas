@@ -143,7 +143,7 @@ class Nav extends Component {
                 <a href="#!"><FontAwesomeIcon icon={faChartColumn} /> 월별 사용량</a>
               </li>
               <li>
-                <a href="/tables"><FontAwesomeIcon icon={faTable} /> 게시판 1</a>
+                <a href="/tables"><FontAwesomeIcon icon={faTable} /> 게시판</a>
               </li>
               <li>
                 <a href="/forms"><FontAwesomeIcon icon={faTable} /> 게시판 2</a>
