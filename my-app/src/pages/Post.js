@@ -4,6 +4,7 @@ import axios from "axios";
 import {CommentList} from "./CommentList";
 import {CommentWrite} from "./CommentWrite";
 import {PostDetail} from "./PostDetail";
+import {LikeButton} from "./LikeButton";
 
 export const Post = () => {
 	const { id } = useParams();
@@ -40,7 +41,7 @@ export const Post = () => {
 	}, [])
 
 	return (
-		<div className="container">
+		<div id="page-wrapper">
 			<PostDetail post={post}/>
 			<CommentWrite />
 			<CommentList comments={comments}/>

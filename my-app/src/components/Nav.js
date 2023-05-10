@@ -17,7 +17,7 @@ class Nav extends Component {
           <a className="navbar-brand" href="/">자취생을 위한!</a>
         </div>
         {/* <!-- /.navbar-header --> */}
-  
+
         <ul className="nav navbar-top-links navbar-right">
           <li className="dropdown">
             <a className="dropdown-toggle" data-toggle="dropdown" href="#!">
@@ -121,103 +121,102 @@ class Nav extends Component {
           {/* <!-- /.dropdown --> */}
         </ul>
         {/* <!-- /.navbar-top-links --> */}
-  
-        <div className="navbar-default sidebar" role="navigation">
-          <div className="sidebar-nav navbar-collapse">
-            <ul className="nav" id="side-menu">
-              <li className="sidebar-search">
-                <div className="input-group custom-search-form">
-                  <input type="text" className="form-control" placeholder="Search..." />
-                  <span className="input-group-btn">
+            <div className="navbar-default sidebar" role="navigation">
+              <div className="sidebar-nav navbar-collapse">
+                <ul className="nav" id="side-menu">
+                  <li className="sidebar-search">
+                    <div className="input-group custom-search-form">
+                      <input type="text" className="form-control" placeholder="Search..." />
+                      <span className="input-group-btn">
                     <button className="btn btn-default" type="button">
                     <FontAwesomeIcon icon={faSearch} />
                     </button>
                   </span>
-                </div>
-                {/* <!-- /input-group --> */}
-              </li>
-              <li>
-                <a href="/dashboard"><FontAwesomeIcon icon={faWonSign} /> 실시간 요금</a>
-              </li>
-              <li>
-                <a href="#!"><FontAwesomeIcon icon={faChartColumn} /> 월별 사용량</a>
-              </li>
-              <li>
-                <a href="/tables"><FontAwesomeIcon icon={faTable} /> 게시판</a>
-              </li>
-              <li>
-                <a href="/forms"><FontAwesomeIcon icon={faTable} /> 게시판 2</a>
-              </li>
-              <li>
-                <a href="#!"><FontAwesomeIcon icon={faGear} /> 기타 드롭다운 메뉴 <span className="fa arrow"></span></a>
-                <ul className="nav nav-second-level">
-                  <li>
-                    <a href="/panel-weels">Panels and Wells</a>
+                    </div>
+                    {/* <!-- /input-group --> */}
                   </li>
                   <li>
-                    <a href="/buttons">Buttons</a>
+                    <a href="/dashboard"><FontAwesomeIcon icon={faWonSign} /> 실시간 요금</a>
                   </li>
                   <li>
-                    <a href="/notifications">Notifications</a>
+                    <a href="#!"><FontAwesomeIcon icon={faChartColumn} /> 월별 사용량</a>
                   </li>
                   <li>
-                    <a href="/typography">Typography</a>
+                    <a href="/tables"><FontAwesomeIcon icon={faTable} /> 게시판</a>
                   </li>
                   <li>
-                    <a href="/icons"> Icons</a>
+                    <a href="/forms"><FontAwesomeIcon icon={faTable} /> 게시판 2</a>
                   </li>
                   <li>
-                    <a href="/grid">Grid</a>
-                  </li>
-                </ul>
-                {/* <!-- /.nav-second-level --> */}
-              </li>
-              <li>
-                <a href="#!"><i className="fa fa-sitemap fa-fw"></i> 드롭다운 1<span className="fa arrow"></span></a>
-                <ul className="nav nav-second-level">
-                  <li>
-                    <a href="#!">Secont Level Item</a>
-                  </li>
-                  <li>
-                    <a href="#!">Second Level Item</a>
-                  </li>
-                  <li>
-                    <a href="#!">드롭다운 2 <span className="fa arrow"></span></a>
-                    <ul className="nav nav-third-level">
+                    <a href="#!"><FontAwesomeIcon icon={faGear} /> 기타 드롭다운 메뉴 <span className="fa arrow"></span></a>
+                    <ul className="nav nav-second-level">
                       <li>
-                        <a href="#!">Third Level Item</a>
+                        <a href="/panel-weels">Panels and Wells</a>
                       </li>
                       <li>
-                        <a href="#!">Third Level Item</a>
+                        <a href="/buttons">Buttons</a>
                       </li>
                       <li>
-                        <a href="#!">Third Level Item</a>
+                        <a href="/notifications">Notifications</a>
                       </li>
                       <li>
-                        <a href="#!">Third Level Item</a>
+                        <a href="/typography">Typography</a>
+                      </li>
+                      <li>
+                        <a href="/icons"> Icons</a>
+                      </li>
+                      <li>
+                        <a href="/grid">Grid</a>
                       </li>
                     </ul>
-                    {/* <!-- /.nav-third-level --> */}
-                  </li>
-                </ul>
-                {/* <!-- /.nav-second-level --> */}
-              </li>
-              <li>
-                <a href="#!"><i className="fa fa-files-o fa-fw"></i> Sample Pages<span className="fa arrow"></span></a>
-                <ul className="nav nav-second-level">
-                  <li>
-                    <a href="/blank">Blank Page</a>
+                    {/* <!-- /.nav-second-level --> */}
                   </li>
                   <li>
-                    <a href="/login">Login Page</a>
+                    <a href="#!"><i className="fa fa-sitemap fa-fw"></i> 드롭다운 1<span className="fa arrow"></span></a>
+                    <ul className="nav nav-second-level">
+                      <li>
+                        <a href="#!">Secont Level Item</a>
+                      </li>
+                      <li>
+                        <a href="#!">Second Level Item</a>
+                      </li>
+                      <li>
+                        <a href="#!">드롭다운 2 <span className="fa arrow"></span></a>
+                        <ul className="nav nav-third-level">
+                          <li>
+                            <a href="#!">Third Level Item</a>
+                          </li>
+                          <li>
+                            <a href="#!">Third Level Item</a>
+                          </li>
+                          <li>
+                            <a href="#!">Third Level Item</a>
+                          </li>
+                          <li>
+                            <a href="#!">Third Level Item</a>
+                          </li>
+                        </ul>
+                        {/* <!-- /.nav-third-level --> */}
+                      </li>
+                    </ul>
+                    {/* <!-- /.nav-second-level --> */}
+                  </li>
+                  <li>
+                    <a href="#!"><i className="fa fa-files-o fa-fw"></i> Sample Pages<span className="fa arrow"></span></a>
+                    <ul className="nav nav-second-level">
+                      <li>
+                        <a href="/blank">Blank Page</a>
+                      </li>
+                      <li>
+                        <a href="/login">Login Page</a>
+                      </li>
+                    </ul>
+                    {/* <!-- /.nav-second-level --> */}
                   </li>
                 </ul>
-                {/* <!-- /.nav-second-level --> */}
-              </li>
-            </ul>
-          </div>
-          {/* <!-- /.sidebar-collapse --> */}
-        </div>
+              </div>
+              {/* <!-- /.sidebar-collapse --> */}
+            </div>
         {/* <!-- /.navbar-static-side --> */}
       </nav>
     );

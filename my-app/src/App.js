@@ -16,6 +16,7 @@ import Grid from './pages/Grid';
 import Blank from './pages/Blank';
 import Login from './pages/Login';
 import {Post} from "./pages/Post";
+import {Write} from "./pages/Write";
 
 // const AuthRoute = ({component: Component, ...rest}) => {
 //   <Route {...rest} render={props => {
@@ -45,7 +46,6 @@ class App extends Component {
               <Route exact path='/dashboard' component={Dashboard} />
               <Route exact path='/flot-chart' component={FlotChart} />
               {/* <Route path='/morris-chart' component={MorrisChart} /> */}
-              <Route path='/tables' element={<Tables/>} />
               <Route exact path='/forms' component={Forms} />
               <Route exact path='/panel-weels' component={PanelWeels} />
               <Route exact path='/buttons' component={Buttons} />
@@ -55,7 +55,9 @@ class App extends Component {
               <Route exact path='/grid' component={Grid} />
               <Route exact path='/blank' component={Blank} />
               <Route exact path='/login' component={Login} />
+              <Route path='/tables' element={<Tables/>} />
               <Route path='/post/:id' element={<Post/>} />
+              <Route path='/write' element={<Write/>} />
               {/* default route */}
               <Route exact path='/' component={Dashboard} />
             </Routes>

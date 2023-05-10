@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {PostWrite, WriteBox} from "./PostWrite";
+import Nav from "../components/Nav";
 
 export const Write = () => {
 
@@ -10,7 +11,8 @@ export const Write = () => {
 	}
 
 	return (
-		<div className="container">
+		<div id="page-wrapper">
+			<h1 className="page-header">글 작성</h1>
 			<textarea
 				className="form-control"
 				rows='1'

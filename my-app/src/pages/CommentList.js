@@ -7,10 +7,10 @@ export const CommentList = ({comments}) => {
 		<div className="w-100">
 			{
 				comments.map(item => (
-					<div>
-						<p>{item.author}</p>
-						<p>{item.content}</p>
-						<p>{item.date}</p>
+					<div style={{backgroundColor: '#F8F8F8'}}>
+						<p style={{margin: '10px'}}>{item.author}</p>
+						<p style={{margin: '10px'}}>{item.content}</p>
+						<p style={{margin: '10px'}}>{item.date}</p>
 						<hr/>
 					</div>
 				))
