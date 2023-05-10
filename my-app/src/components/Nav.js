@@ -142,10 +142,19 @@ class Nav extends Component {
                     <a href="#!"><FontAwesomeIcon icon={faChartColumn} /> 월별 사용량</a>
                   </li>
                   <li>
-                    <a href="/tables"><FontAwesomeIcon icon={faTable} /> 게시판</a>
+                    <a href="/karrot"><FontAwesomeIcon icon={faTable} /> 중고 거래</a>
                   </li>
                   <li>
-                    <a href="/forms"><FontAwesomeIcon icon={faTable} /> 게시판 2</a>
+                    <a href="/group-buying"><FontAwesomeIcon icon={faTable} /> 공동 구매</a>
+                  </li>
+                  <li>
+                    <a href="/product-review"><FontAwesomeIcon icon={faTable} /> 물품 리뷰</a>
+                  </li>
+                  <li>
+                    <a href="/government"><FontAwesomeIcon icon={faTable} /> 정부 정책</a>
+                  </li>
+                  <li>
+                    <a href="/life-hack"><FontAwesomeIcon icon={faTable} /> 생활 꿀팁</a>
                   </li>
                   <li>
                     <a href="#!"><FontAwesomeIcon icon={faGear} /> 기타 드롭다운 메뉴 <span className="fa arrow"></span></a>

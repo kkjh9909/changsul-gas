@@ -3,7 +3,7 @@ import axios from "axios";
 import Nav from "../components/Nav";
 import {Link, NavLink} from "react-router-dom";
 
-export const Tables = () => {
+export const Tables = ({title}) => {
 
     const [data, setData] = useState([]);
 
@@ -62,7 +62,7 @@ export const Tables = () => {
       <div id="page-wrapper">
         <div className="row">
           <div className="col-lg-12">
-            <h1 className="page-header">Tables</h1>
+            <h1 className="page-header">{title}</h1>
           </div>
           {/* <!-- /.col-lg-12 --> */}
         </div>

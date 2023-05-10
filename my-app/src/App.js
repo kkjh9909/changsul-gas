@@ -17,6 +17,11 @@ import Blank from './pages/Blank';
 import Login from './pages/Login';
 import {Post} from "./pages/Post";
 import {Write} from "./pages/Write";
+import {Karrot} from "./pages/karrot";
+import {GroupBuying} from "./pages/GroupBuying";
+import {LifeHack} from "./pages/LifeHack";
+import {ProductReview} from "./pages/ProductReview";
+import {Government} from "./pages/Government";
 
 // const AuthRoute = ({component: Component, ...rest}) => {
 //   <Route {...rest} render={props => {
@@ -55,7 +60,11 @@ class App extends Component {
               <Route exact path='/grid' component={Grid} />
               <Route exact path='/blank' component={Blank} />
               <Route exact path='/login' component={Login} />
-              <Route path='/tables' element={<Tables/>} />
+              <Route path='/karrot' element={<Karrot/>} />
+              <Route path='/group-buying' element={<GroupBuying/>} />
+              <Route path='/government' element={<Government/>} />
+              <Route path='/product-review' element={<ProductReview/>} />
+              <Route path='/life-hack' element={<LifeHack/>} />
               <Route path='/post/:id' element={<Post/>} />
               <Route path='/write' element={<Write/>} />
               {/* default route */}
