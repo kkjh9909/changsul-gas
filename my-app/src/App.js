@@ -14,7 +14,7 @@ import Typography from './pages/Typography';
 import Icons from './pages/Icons';
 import Grid from './pages/Grid';
 import Blank from './pages/Blank';
-import Login from './pages/Login';
+import {Login} from './pages/Login';
 import {Post} from "./components/post/Post";
 import {Write} from "./pages/Write";
 import {Karrot} from "./pages/Karrot";
@@ -23,6 +23,7 @@ import {LifeHack} from "./pages/LifeHack";
 import {ProductReview} from "./pages/ProductReview";
 import {Government} from "./pages/Government";
 import {KakaoLogin} from "./components/login/KakaoLogin";
+import {SignUp} from "./pages/SignUp";
 
 // const AuthRoute = ({component: Component, ...rest}) => {
 //   <Route {...rest} render={props => {
@@ -69,6 +70,7 @@ class App extends Component {
               <Route path='/post/:id' element={<Post/>} />
               <Route path='/write' element={<Write/>} />
               <Route path='/auth/kakao/callback' element={<KakaoLogin />} />
+              <Route path='/signup' element={<SignUp />} />
               {/* default route */}
               <Route path='/' element={<Dashboard />} />
             </Routes>

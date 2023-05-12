@@ -11,7 +11,7 @@ export const PostDetail = ({post, nickname, postId}) => {
 		try {
 			const res = await axios.delete(`http://34.215.66.235:8000/post/${postId}/${nickname}`,{
 				headers: {
-					Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrbmFtZSI6InRlc3QxIiwidWlkIjoiMTAyODkwMTcyOTA0IiwiZXhwIjoxNjg2NDYxMTMzfQ.XabT9zlsappBJrz3OQ3XkN1Flixu_qGZaGMQwzyIApc"
+					Authorization: `Bearer ${localStorage.getItem('token')}`
 				}
 			})
 			console.log('성공')

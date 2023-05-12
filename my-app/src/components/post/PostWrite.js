@@ -31,7 +31,7 @@ export const PostWrite = ({title}) => {
 				"content": body
 			}, {
 				headers: {
-					"Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrbmFtZSI6InRlc3QxIiwidWlkIjoiMTAyODkwMTcyOTA0IiwiZXhwIjoxNjg2NDYxMTMzfQ.XabT9zlsappBJrz3OQ3XkN1Flixu_qGZaGMQwzyIApc`
+					"Authorization": `Bearer ${localStorage.getItem('token')}`
 				}
 			});
 			navigate(`/post/${res.data.id}`)
