@@ -43,7 +43,7 @@ export const Post = () => {
 	return (
 		<div id="page-wrapper">
 			<PostDetail post={post}/>
-			<CommentWrite />
+			<CommentWrite postId={id}/>
 			<CommentList comments={comments}/>
 		</div>
 	)

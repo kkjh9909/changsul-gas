@@ -1,6 +1,6 @@
 
 import React from 'react'
-import Tables from "./Tables";
+import Tables from "../components/table/Tables";
 
 export const Karrot = () => {
 	return(

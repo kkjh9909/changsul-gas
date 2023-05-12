@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import Nav from "../components/Nav";
-import {Link, NavLink} from "react-router-dom";
+import Nav from "../Nav";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 
 export const Tables = ({title}) => {
 
+    const navigate = useNavigate();
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -109,9 +110,7 @@ export const Tables = ({title}) => {
           </div>
           {/* <!-- /.col-lg-12 --> */}
         </div>
-          <button className="btn btn-primary btn-lg" onClick={() => {
-              window.location.href= `/write`
-          }}>글쓰기</button>
+          <button className="btn btn-primary btn-lg" onClick={() => navigate('/write')}>글쓰기</button>
       </div>
     );
 }

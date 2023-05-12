@@ -5,7 +5,7 @@ import Nav from './components/Nav';
 import Dashboard from './pages/Dashboard';
 import FlotChart from './pages/FlotChart';
 // import MorrisChart from './pages/MorrisChart';
-import Tables from './pages/Tables';
+import Tables from './components/table/Tables';
 import Forms from './pages/Forms';
 import PanelWeels from './pages/PanelWeels';
 import Buttons from './pages/Buttons';
@@ -15,13 +15,14 @@ import Icons from './pages/Icons';
 import Grid from './pages/Grid';
 import Blank from './pages/Blank';
 import Login from './pages/Login';
-import {Post} from "./pages/Post";
+import {Post} from "./components/post/Post";
 import {Write} from "./pages/Write";
-import {Karrot} from "./pages/karrot";
+import {Karrot} from "./pages/Karrot";
 import {GroupBuying} from "./pages/GroupBuying";
 import {LifeHack} from "./pages/LifeHack";
 import {ProductReview} from "./pages/ProductReview";
 import {Government} from "./pages/Government";
+import {KakaoLogin} from "./components/login/KakaoLogin";
 
 // const AuthRoute = ({component: Component, ...rest}) => {
 //   <Route {...rest} render={props => {
@@ -48,18 +49,18 @@ class App extends Component {
           <Nav />
           <main role="main">
             <Routes>
-              <Route exact path='/dashboard' component={Dashboard} />
-              <Route exact path='/flot-chart' component={FlotChart} />
+              <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/flot-chart' element={<FlotChart />} />
               {/* <Route path='/morris-chart' component={MorrisChart} /> */}
-              <Route exact path='/forms' component={Forms} />
-              <Route exact path='/panel-weels' component={PanelWeels} />
-              <Route exact path='/buttons' component={Buttons} />
-              <Route exact path='/notifications' component={Notifications} />
-              <Route exact path='/typography' component={Typography} />
-              <Route exact path='/icons' component={Icons} />
-              <Route exact path='/grid' component={Grid} />
-              <Route exact path='/blank' component={Blank} />
-              <Route exact path='/login' component={Login} />
+              <Route path='/forms' element={<Forms />} />
+              <Route path='/panel-weels' element={<PanelWeels />} />
+              <Route path='/buttons' element={<Buttons />} />
+              <Route path='/notifications' element={<Notifications />} />
+              <Route path='/typography' element={<Typography />} />
+              <Route path='/icons' element={<Icons />} />
+              <Route path='/grid' element={<Grid />} />
+              <Route path='/blank' element={<Blank />} />
+              <Route path='/login' element={<Login />} />
               <Route path='/karrot' element={<Karrot/>} />
               <Route path='/group-buying' element={<GroupBuying/>} />
               <Route path='/government' element={<Government/>} />
@@ -67,8 +68,9 @@ class App extends Component {
               <Route path='/life-hack' element={<LifeHack/>} />
               <Route path='/post/:id' element={<Post/>} />
               <Route path='/write' element={<Write/>} />
+              <Route path='/auth/kakao/callback' element={<KakaoLogin />} />
               {/* default route */}
-              <Route exact path='/' component={Dashboard} />
+              <Route path='/' element={<Dashboard />} />
             </Routes>
           </main>
         </div>

@@ -2,7 +2,7 @@ import React from "react";
 import {useState} from "react";
 import axios from "axios";
 
-export const CommentWrite = () => {
+export const CommentWrite = ({postId}) => {
 
 	const [comment, setComment] = useState("");
 	const [rows, setRows] = useState(2);
@@ -12,8 +12,16 @@ export const CommentWrite = () => {
 		setRows(event.target.value.split('\n').length + 1);
 	}
 
-	const handleWrite = () => {
-		// comment 정보 서버로 전송
+	const handleWrite = async () => {
+		try {
+			const res = await axios.post('http://34.215.66.235:8000/comment', {
+				"post_id": postId,
+				"content": comment,
+			})
+		}
+		catch(err) {
+			console.log('comment write err ', err);
+		}
 	}
 
 	return (

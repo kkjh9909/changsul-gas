@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {PostWrite, WriteBox} from "./PostWrite";
+import {PostWrite, WriteBox} from "../components/post/PostWrite";
 import Nav from "../components/Nav";
 
 export const Write = () => {

@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faCaretDown, faAngleRight, faBell, faComment, faScroll, faUser, faGear, faSignOut, faSearch, faWonSign, faChartColumn, faTable } from '@fortawesome/free-solid-svg-icons';
 import { onLogout } from '../App.js';
+import {Link, useNavigate} from "react-router-dom";
 
 class Nav extends Component {
+
+
   render() {
     return (
         <nav className="navbar navbar-default navbar-static-top" style={{marginBottom: 0}}>
@@ -136,25 +139,25 @@ class Nav extends Component {
                     {/* <!-- /input-group --> */}
                   </li>
                   <li>
-                    <a href="/dashboard"><FontAwesomeIcon icon={faWonSign} /> 실시간 요금</a>
+                    <Link to='/dashboard'><FontAwesomeIcon icon={faWonSign} /> 실시간 요금</Link>
                   </li>
                   <li>
                     <a href="#!"><FontAwesomeIcon icon={faChartColumn} /> 월별 사용량</a>
                   </li>
                   <li>
-                    <a href="/karrot"><FontAwesomeIcon icon={faTable} /> 중고 거래</a>
+                    <Link to='/karrot'><FontAwesomeIcon icon={faTable} /> 중고 거래</Link>
                   </li>
                   <li>
-                    <a href="/group-buying"><FontAwesomeIcon icon={faTable} /> 공동 구매</a>
+                    <Link to='/group-buying'><FontAwesomeIcon icon={faTable} /> 공동 구매</Link>
                   </li>
                   <li>
-                    <a href="/product-review"><FontAwesomeIcon icon={faTable} /> 물품 리뷰</a>
+                    <Link to='/product-review'><FontAwesomeIcon icon={faTable} /> 물품 리뷰</Link>
                   </li>
                   <li>
-                    <a href="/government"><FontAwesomeIcon icon={faTable} /> 정부 정책</a>
+                    <Link to='/government'><FontAwesomeIcon icon={faTable} /> 정부 정책</Link>
                   </li>
                   <li>
-                    <a href="/life-hack"><FontAwesomeIcon icon={faTable} /> 생활 꿀팁</a>
+                    <Link to='/life-hack'><FontAwesomeIcon icon={faTable} /> 생활 꿀팁</Link>
                   </li>
                   <li>
                     <a href="#!"><FontAwesomeIcon icon={faGear} /> 기타 드롭다운 메뉴 <span className="fa arrow"></span></a>

@@ -1,17 +1,26 @@
 import React from "react";
 import axios from "axios";
 import {LikeButton} from "./LikeButton";
+import {useNavigate} from "react-router-dom";
 
 export const PostDetail = ({post}) => {
 
-	const deletePost = () => {
-		axios.delete(`http://34.215.66.235:8000/post/${post.id}`)
-			.then(res => window.location.href = "/tables")
-			.catch(err => alert("에러 발생"))
+	const navigate = useNavigate();
+
+	const deletePost = async () => {
+		try {
+			const res = await axios.delete(`http://34.215.66.235:8000/post/${post.id}`)
+			navigate('/karrot')
+		}
+		catch(err) {
+			console.log('post delete err: ', err);
+		}
 	}
 
-	const updatePost = () => {
-
+	const updatePost = async () => {
+		// try {
+		// 	await axios.pu
+		// }
 	}
 
 	return (
@@ -22,10 +31,7 @@ export const PostDetail = ({post}) => {
 				<p className="font-monospace">{post.date}</p>
 			</div>
 			<hr/>
-			<div style={{minHeight: '500px'}}>
-				<p>{post.content}</p>
-			</div>
-
+			<div dangerouslySetInnerHTML={{ __html: post.body }} style={{minHeight: '500px'}}></div>
 			<LikeButton />
 			{/*로그인 회원일 시 보여주기*/}
 			<div>
