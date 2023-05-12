@@ -25,12 +25,20 @@ export const PostWrite = ({title}) => {
 	}
 
 	const handleWrite =  async () => {
-		const postId = await axios.post(`http://34.215.66.235:8000/post`, {
-			"title": title,
-			"content": body
-		});
-
-		// navigate(`/post/${}`)
+		try {
+			const res = await axios.post(`http://34.215.66.235:8000/post`, {
+				"title": title,
+				"content": body
+			}, {
+				headers: {
+					"Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrbmFtZSI6InRlc3QxIiwidWlkIjoiMTAyODkwMTcyOTA0IiwiZXhwIjoxNjg2NDYxMTMzfQ.XabT9zlsappBJrz3OQ3XkN1Flixu_qGZaGMQwzyIApc`
+				}
+			});
+			navigate(`/post/${res.data.id}`)
+		}
+		catch (err) {
+			console.log('실패', err);
+		}
 	}
 
 	const imageHandler = () => {

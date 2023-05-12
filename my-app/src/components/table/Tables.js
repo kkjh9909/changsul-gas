@@ -9,53 +9,8 @@ export const Tables = ({title}) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-      // axios.get(`http://34.215.66.235:8000/all-posts`)
-      //     .then(res => setData(res.data))
-
-        setData([
-            {
-                "id": 20,
-                "title": "eg_title",
-                "author": "tester",
-                "date": "23-04-10 10:32:41",
-                "like": 0,
-            },
-            {
-                "id": 31,
-                "title": "eg_title1",
-                "author": "tester1",
-                "date": "23-04-10 10:35:41",
-                "like": 0,
-            },
-            {
-                "id": 31,
-                "title": "eg_title1",
-                "author": "tester1",
-                "date": "23-04-10 10:35:41",
-                "like": 0,
-            },
-            {
-                "id": 31,
-                "title": "eg_title1",
-                "author": "tester1",
-                "date": "23-04-10 10:35:41",
-                "like": 0,
-            },
-            {
-                "id": 31,
-                "title": "eg_title1",
-                "author": "tester1",
-                "date": "23-04-10 10:35:41",
-                "like": 0,
-            },
-            {
-                "id": 31,
-                "title": "eg_title1",
-                "author": "tester1",
-                "date": "23-04-10 10:35:41",
-                "like": 0,
-            },
-        ])
+      axios.get(`http://34.215.66.235:8000/all-posts`)
+          .then(res => setData(res.data.posts))
     }, [])
 
 

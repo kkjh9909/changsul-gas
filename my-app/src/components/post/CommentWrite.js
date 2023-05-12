@@ -1,8 +1,11 @@
 import React from "react";
 import {useState} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 export const CommentWrite = ({postId}) => {
+
+	const navigate = useNavigate();
 
 	const [comment, setComment] = useState("");
 	const [rows, setRows] = useState(2);
@@ -17,7 +20,13 @@ export const CommentWrite = ({postId}) => {
 			const res = await axios.post('http://34.215.66.235:8000/comment', {
 				"post_id": postId,
 				"content": comment,
+			}, {
+				headers: {
+					Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrbmFtZSI6InRlc3QxIiwidWlkIjoiMTAyODkwMTcyOTA0IiwiZXhwIjoxNjg2NDYxMTMzfQ.XabT9zlsappBJrz3OQ3XkN1Flixu_qGZaGMQwzyIApc`
+				}
 			})
+
+			window.location.reload();
 		}
 		catch(err) {
 			console.log('comment write err ', err);

@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faCaretDown, faAngleRight, faBell, faComment, faScroll, faUser, faGear, faSignOut, faSearch, faWonSign, faChartColumn, faTable } from '@fortawesome/free-solid-svg-icons';
+import {
+  faEnvelope,
+  faCaretDown,
+  faAngleRight,
+  faBell,
+  faComment,
+  faScroll,
+  faUser,
+  faGear,
+  faSignOut,
+  faSearch,
+  faWonSign,
+  faChartColumn,
+  faTable,
+  faSignIn
+} from '@fortawesome/free-solid-svg-icons';
 import { onLogout } from '../App.js';
 import {Link, useNavigate} from "react-router-dom";
 
@@ -116,12 +131,17 @@ class Nav extends Component {
               <li><a href="/settings"><FontAwesomeIcon icon={faGear} /> 설정</a>
               </li>
               <li className="divider"></li>
-              <li><a href="#!" onClick={onLogout()} ><FontAwesomeIcon icon={faSignOut} /> 로그아웃</a>
+                <li><a href="#!" onClick={onLogout()} ><FontAwesomeIcon icon={faSignIn} /> 로그인</a>
               </li>
             </ul>
             {/* <!-- /.dropdown-user --> */}
           </li>
           {/* <!-- /.dropdown --> */}
+
+
+
+
+          
         </ul>
         {/* <!-- /.navbar-top-links --> */}
             <div className="navbar-default sidebar" role="navigation">

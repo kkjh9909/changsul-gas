@@ -5,44 +5,29 @@ import {CommentList} from "./CommentList";
 import {CommentWrite} from "./CommentWrite";
 import {PostDetail} from "./PostDetail";
 import {LikeButton} from "./LikeButton";
+import jwt_decode from 'jwt-decode'
 
 export const Post = () => {
 	const { id } = useParams();
 
 	const [post, setPost] = useState({});
 	const [comments, setComments] = useState([]);
+	const [nickname, setNickname] = useState("");
 
 	useEffect(() => {
-		// axios.get(`http://34.215.66.235:8000/post?id=${id}`)
-		// 	.then(res => setPost(res.data))
-
-		setPost({
-				"title": "test",
-				"content": "test 내용입니다",
-				"author": "작성자입니다",
-				"date": "23-04-12 10:25:41"
-			,
-		})
-
-		setComments([
-			{
-				"content": "댓글 내용입니다",
-				"author": "작성자입니다",
-				"date": "23-04-20 17:24:56",
-				"id": 17
-			},
-			{
-				"content": "댓글 내용입니다",
-				"author": "작성자입니다",
-				"date": "23-04-20 17:24:56",
-				"id": 24
-			}
-		])
+		axios.get(`http://34.215.66.235:8000/post?id=${id}`)
+			.then(res => {
+				setPost(res.data.writing)
+				setComments(res.data.comments)
+				const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrbmFtZSI6InRlc3QxIiwidWlkIjoiMTAyODkwMTcyOTA0IiwiZXhwIjoxNjg2NDYxMTMzfQ.XabT9zlsappBJrz3OQ3XkN1Flixu_qGZaGMQwzyIApc"
+				const payload = jwt_decode(token);
+				setNickname(payload.nickname)
+			})
 	}, [])
 
 	return (
 		<div id="page-wrapper">
-			<PostDetail post={post}/>
+			<PostDetail post={post} nickname={nickname} postId={id}/>
 			<CommentWrite postId={id}/>
 			<CommentList comments={comments}/>
 		</div>
