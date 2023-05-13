@@ -19,7 +19,7 @@ export const Post = () => {
 			.then(res => {
 				setPost(res.data.writing)
 				setComments(res.data.comments)
-				const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrbmFtZSI6InRlc3QxIiwidWlkIjoiMTAyODkwMTcyOTA0IiwiZXhwIjoxNjg2NDYxMTMzfQ.XabT9zlsappBJrz3OQ3XkN1Flixu_qGZaGMQwzyIApc"
+				const token = localStorage.getItem('token');
 				const payload = jwt_decode(token);
 				setNickname(payload.nickname)
 			})

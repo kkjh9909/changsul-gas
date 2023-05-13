@@ -1,8 +1,11 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import axios from "axios";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {Context} from "../store/Context";
 
 export const SignUp = () => {
+
+	const { setIsLogin } = useContext(Context);
 
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -22,8 +25,9 @@ export const SignUp = () => {
 					Authorization: `Bearer ${location.state.token}`
 				}
 			})
-			console.log(res)
+			console.log('signup ', res)
 			window.localStorage.setItem('token', res.data.access_token);
+			setIsLogin(true);
 			navigate('/');
 		}
 		catch (err) {

@@ -14,7 +14,6 @@ export const PostDetail = ({post, nickname, postId}) => {
 					Authorization: `Bearer ${localStorage.getItem('token')}`
 				}
 			})
-			console.log('성공')
 			navigate('/karrot')
 		}
 		catch(err) {

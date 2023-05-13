@@ -44,8 +44,8 @@ export const Tables = ({title}) => {
                   <tbody>
                     {
                       data.map((item, index) => (
-                          <tr key={index} className={index % 2 === 0 ? 'even' : 'odd'} onClick={() => {
-                              window.location.href= `/post/${item.id}`
+                          <tr key={index} className={index % 2 === 0 ? 'even' : 'odd'} style={{cursor: 'pointer'}} onClick={() => {
+                              navigate(`/post/${item.id}`);
                           }}>
                                 <td>{item.id}</td>
                                 <td>{item.title}</td>

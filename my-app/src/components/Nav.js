@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, useContext} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faEnvelope,
@@ -16,13 +16,15 @@ import {
   faTable,
   faSignIn
 } from '@fortawesome/free-solid-svg-icons';
-import { onLogout } from '../App.js';
+// import { onLogout } from '../App.js';
 import {Link, useNavigate} from "react-router-dom";
+import {Context} from "../store/Context";
 
-class Nav extends Component {
+export const Nav = () => {
 
+    const navigate = useNavigate();
+    const {isLogin, setIsLogin} = useContext(Context);
 
-  render() {
     return (
         <nav className="navbar navbar-default navbar-static-top" style={{marginBottom: 0}}>
         <div className="navbar-header">
@@ -126,13 +128,20 @@ class Nav extends Component {
             <FontAwesomeIcon icon={faUser} /> <FontAwesomeIcon icon={faCaretDown} />
             </a>
             <ul className="dropdown-menu dropdown-user">
-              <li><a href="#!"><FontAwesomeIcon icon={faUser} /> 내 프로필</a>
-              </li>
-              <li><a href="/settings"><FontAwesomeIcon icon={faGear} /> 설정</a>
-              </li>
-              <li className="divider"></li>
-                <li><a href="#!" onClick={onLogout()} ><FontAwesomeIcon icon={faSignIn} /> 로그인</a>
-              </li>
+              {
+                isLogin ? (
+                    <React.Fragment>
+                      <li><a href="#!"><FontAwesomeIcon icon={faUser} /> 내 프로필</a></li>
+                      <li><a href="/settings"><FontAwesomeIcon icon={faGear} /> 설정</a></li>
+                      <li className="divider"></li>
+                      <li><a href="#!" ><FontAwesomeIcon icon={faSignOut} /> 로그아웃</a></li>
+                    </React.Fragment>
+                ) : (
+                    <div style={{textAlign: 'center', cursor: 'pointer'}} onClick={() => navigate('/login')}>
+                      <li><FontAwesomeIcon icon={faSignIn} /> 로그인</li>
+                    </div>
+                )
+              }
             </ul>
             {/* <!-- /.dropdown-user --> */}
           </li>
@@ -252,7 +261,4 @@ class Nav extends Component {
         {/* <!-- /.navbar-static-side --> */}
       </nav>
     );
-  }
 }
-
-export default Nav;
