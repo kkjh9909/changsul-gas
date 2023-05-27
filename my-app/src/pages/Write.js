@@ -1,10 +1,13 @@
 import React, {useState} from 'react'
 import {PostWrite, WriteBox} from "../components/post/PostWrite";
 import Nav from "../components/Nav";
+import {useParams} from "react-router-dom";
 
 export const Write = () => {
 
 	const [title, setTitle] = useState("");
+
+	const category = useParams();
 
 	const handleTitle = (event) => {
 		setTitle(event.target.value);
@@ -21,7 +24,10 @@ export const Write = () => {
 				onChange={handleTitle}
 			/>
 			<div style={{marginTop: '50px'}}>
-				<PostWrite title={title}/>
+				<PostWrite
+					title={title}
+					category={category}
+				/>
 			</div>
 		</div>
 	)

@@ -7,7 +7,7 @@ import aws from 'aws-sdk'
 import uuid from 'react-uuid'
 import {useNavigate} from "react-router-dom";
 
-export const PostWrite = ({title}) => {
+export const PostWrite = ({title, category}) => {
 
 	const navigate = useNavigate();
 
@@ -28,7 +28,8 @@ export const PostWrite = ({title}) => {
 		try {
 			const res = await axios.post(`http://34.215.66.235:8000/post`, {
 				"title": title,
-				"content": body
+				"content": body,
+				"board": category.category
 			}, {
 				headers: {
 					"Authorization": `Bearer ${localStorage.getItem('token')}`

@@ -72,7 +72,7 @@ class App extends Component {
                 <Route path='/auth/kakao/callback' element={<KakaoLogin />} />
                 <Route path='/signup' element={<SignUp />} />
                 {/* default route */}
-                <Route path='/write' element={<Write/>} />
+                <Route path='/:category/write' element={<Write/>} />
                 <Route path='/' element={<Dashboard />} />
               </Routes>
             </main>
