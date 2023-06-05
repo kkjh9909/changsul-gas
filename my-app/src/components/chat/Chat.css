@@ -1,0 +1,39 @@
+
+.chat-background {
+    background-color: #9bbbd4;
+    flex-direction: column;
+}
+
+.my-chat-message {
+    margin-left: 50%;
+    width: 50%;
+    padding-right: 10px;
+    margin-top: 10px;
+    background-color: #fef01b;
+    text-align: end;
+    border: solid black 1px;
+    border-radius: 10px;
+    align-self: flex-end;
+}
+
+.your-chat-message {
+    width: 50%;
+    padding-left: 10px;
+    margin-top: 10px;
+    background-color: #ffffff;
+    text-align: start;
+    border: solid black 1px;
+    border-radius: 10px;
+    align-self: flex-start;
+}
+
+.time-stamp {
+    color: #AAAAAA;
+}
+
+.text-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+

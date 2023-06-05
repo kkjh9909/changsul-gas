@@ -22,9 +22,7 @@ export const PostDetail = ({post, nickname, postId}) => {
 	}
 
 	const updatePost = async () => {
-		// try {
-		// 	await axios.pu
-		// }
+		navigate(`/chatroom`, {state: post.author})
 	}
 
 	return (
@@ -42,11 +40,11 @@ export const PostDetail = ({post, nickname, postId}) => {
 			{
 				post.author === nickname ? (
 					<div>
-						<button className="btn btn-warning" style={{color: 'black'}} onClick={updatePost}>수정하기</button>
 						<button className="btn btn-danger" style={{color: 'black'}} onClick={deletePost}>삭제하기</button>
 					</div>
 				) : (<div></div>)
 			}
+						<button className="btn btn-warning" style={{color: 'black'}} onClick={updatePost}>채팅걸기</button>
 			<hr/>
 		</div>
 	)

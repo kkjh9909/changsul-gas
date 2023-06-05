@@ -25,6 +25,7 @@ import {Government} from "./pages/Government";
 import {KakaoLogin} from "./components/login/KakaoLogin";
 import {SignUp} from "./pages/SignUp";
 import {ContextProvider} from "./store/Context";
+import {Chatroom} from "./pages/Chatroom";
 
 // const AuthRoute = ({component: Component, ...rest}) => {
 //   <Route {...rest} render={props => {
@@ -71,6 +72,7 @@ class App extends Component {
                 <Route path='/post/:id' element={<Post/>} />
                 <Route path='/auth/kakao/callback' element={<KakaoLogin />} />
                 <Route path='/signup' element={<SignUp />} />
+                <Route path='/chatroom' element={<Chatroom />} />
                 {/* default route */}
                 <Route path='/:category/write' element={<Write/>} />
                 <Route path='/' element={<Dashboard />} />
