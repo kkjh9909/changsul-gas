@@ -23,7 +23,7 @@ import {Context} from "../store/Context";
 export const Nav = () => {
 
     const navigate = useNavigate();
-    const {isLogin, setIsLogin} = useContext(Context);
+    const {isLogin, logout} = useContext(Context);
 
     return (
         <nav className="navbar navbar-default navbar-static-top" style={{marginBottom: 0}}>
@@ -34,7 +34,7 @@ export const Nav = () => {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="/">자취생을 위한!</a>
+          <Link to='/' className="navbar-brand">자취생을 위한</Link>
         </div>
         {/* <!-- /.navbar-header --> */}
 
@@ -134,7 +134,7 @@ export const Nav = () => {
                       <li><a href="#!"><FontAwesomeIcon icon={faUser} /> 내 프로필</a></li>
                       <li><a href="/settings"><FontAwesomeIcon icon={faGear} /> 설정</a></li>
                       <li className="divider"></li>
-                      <li><a href="#!" ><FontAwesomeIcon icon={faSignOut} /> 로그아웃</a></li>
+                      <Link to='/' onClick={logout}><FontAwesomeIcon icon={faSignOut} /> 로그아웃</Link>
                     </React.Fragment>
                 ) : (
                     <div style={{textAlign: 'center', cursor: 'pointer'}} onClick={() => navigate('/login')}>

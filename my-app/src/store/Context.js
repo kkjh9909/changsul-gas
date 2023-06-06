@@ -31,6 +31,11 @@ const ContextProvider = ({children}) => {
 
 	}, [isLogin])
 
+	const logout = () => {
+		setIsLogin(false);
+		localStorage.removeItem("token");
+	}
+
 	return (
 		<Context.Provider value={{isLogin, setIsLogin}}>
 			{children}
