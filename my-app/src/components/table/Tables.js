@@ -81,7 +81,7 @@ export const Tables = ({title, category}) => {
                                 <td>{item.title}</td>
                                 <td>{item.author}</td>
                                 <td>{item.date}</td>
-                                <td>{item.like}</td>
+                                <td>{item.likes}</td>
                           </tr>
                       ))
                     }
@@ -90,7 +90,7 @@ export const Tables = ({title, category}) => {
                   <div style={{width: '100%', textAlign:'center'}}>
                       <Pagination
                         activePage={page + 1}
-                        itemsCountPerPage={2}
+                        itemsCountPerPage={5}
                         totalItemsCount={count}
                         pageRangeDisplayed={5}
                         onChange={handlePageChange}
