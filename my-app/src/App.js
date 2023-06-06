@@ -4,8 +4,6 @@ import './App.css';
 import {Nav} from './components/Nav';
 import Dashboard from './pages/Dashboard';
 import FlotChart from './pages/FlotChart';
-// import MorrisChart from './pages/MorrisChart';
-import Tables from './components/table/Tables';
 import Forms from './pages/Forms';
 import PanelWeels from './pages/PanelWeels';
 import Buttons from './pages/Buttons';
@@ -26,22 +24,7 @@ import {KakaoLogin} from "./components/login/KakaoLogin";
 import {SignUp} from "./pages/SignUp";
 import {ContextProvider} from "./store/Context";
 import {Chatroom} from "./pages/Chatroom";
-
-// const AuthRoute = ({component: Component, ...rest}) => {
-//   <Route {...rest} render={props => {
-//     true ? (<Component {...props} />) : 
-//     (<Redirect to={{pathName: '/login'}} />)
-//   }}/>
-// }
-
-// let isLoggedIn = true;
-//
-// export function onLogout() {
-//   isLoggedIn = false;
-// }
-// export function onLogin() {
-//   isLoggedIn = true;
-// }
+import PrivateRoute from "./pages/PrivateRoute";
 
 class App extends Component {
 
@@ -52,6 +35,7 @@ class App extends Component {
             <Nav />
             <main role="main">
               <Routes>
+                <Route path='/' element={<Dashboard />} />
                 <Route path='/dashboard' element={<Dashboard />} />
                 <Route path='/flot-chart' element={<FlotChart />} />
                 {/* <Route path='/morris-chart' component={MorrisChart} /> */}
@@ -71,15 +55,14 @@ class App extends Component {
                 <Route path='/life-hack' element={<LifeHack/>} />
                 <Route path='/post/:id' element={<Post/>} />
                 <Route path='/auth/kakao/callback' element={<KakaoLogin />} />
-                <Route path='/signup' element={<SignUp />} />
-                <Route path='/chatroom' element={<Chatroom />} />
-                {/* default route */}
-                <Route path='/:category/write' element={<Write/>} />
-                <Route path='/' element={<Dashboard />} />
+
+                {/* private route */}
+                <Route path='/chatroom' element={<PrivateRoute component={<Chatroom />}/>} />
+                <Route path='/:category/write' element={<PrivateRoute component={<Write />}/>} />
+                <Route path='/signup' element={<PrivateRoute component={<SignUp />}/>} />
               </Routes>
             </main>
           </ContextProvider>
-
         </div>
     );
   }
