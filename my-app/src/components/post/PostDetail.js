@@ -21,7 +21,7 @@ export const PostDetail = ({post, nickname, postId}) => {
 		}
 	}
 
-	const updatePost = async () => {
+	const handleChat = async () => {
 		navigate(`/chatroom`, {state: post.author})
 	}
 
@@ -44,7 +44,7 @@ export const PostDetail = ({post, nickname, postId}) => {
 					</div>
 				) : (<div></div>)
 			}
-						<button className="btn btn-warning" style={{color: 'black'}} onClick={updatePost}>채팅걸기</button>
+				<button className="btn btn-warning" style={{color: 'black'}} onClick={handleChat}>채팅걸기</button>
 			<hr/>
 		</div>
 	)
