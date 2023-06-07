@@ -13,7 +13,7 @@ import Icons from './pages/Icons';
 import Grid from './pages/Grid';
 import Blank from './pages/Blank';
 import {Login} from './pages/Login';
-import {Post} from "./components/post/Post";
+import {Post} from "./pages/Post";
 import {Write} from "./pages/Write";
 import {Karrot} from "./pages/Karrot";
 import {GroupBuying} from "./pages/GroupBuying";
@@ -25,6 +25,8 @@ import {SignUp} from "./pages/SignUp";
 import {ContextProvider} from "./store/Context";
 import {Chatroom} from "./pages/Chatroom";
 import PrivateRoute from "./pages/PrivateRoute";
+import MorrisChart from "./pages/MorrisChart";
+import {NotFound} from "./pages/NotFound";
 
 class App extends Component {
 
@@ -37,16 +39,8 @@ class App extends Component {
               <Routes>
                 <Route path='/' element={<Dashboard />} />
                 <Route path='/dashboard' element={<Dashboard />} />
-                <Route path='/flot-chart' element={<FlotChart />} />
-                {/* <Route path='/morris-chart' component={MorrisChart} /> */}
-                <Route path='/forms' element={<Forms />} />
-                <Route path='/panel-weels' element={<PanelWeels />} />
-                <Route path='/buttons' element={<Buttons />} />
-                <Route path='/notifications' element={<Notifications />} />
-                <Route path='/typography' element={<Typography />} />
-                <Route path='/icons' element={<Icons />} />
-                <Route path='/grid' element={<Grid />} />
-                <Route path='/blank' element={<Blank />} />
+
+
                 <Route path='/login' element={<Login />} />
                 <Route path='/karrot' element={<Karrot/>} />
                 <Route path='/group-buying' element={<GroupBuying/>} />
@@ -56,10 +50,25 @@ class App extends Component {
                 <Route path='/post/:id' element={<Post/>} />
                 <Route path='/auth/kakao/callback' element={<KakaoLogin />} />
 
+
+                <Route path='/morris-chart' element={MorrisChart} />
+                <Route path='/typography' element={<Typography />} />
+                <Route path='/flot-chart' element={<FlotChart />} />
+                <Route path='/forms' element={<Forms />} />
+                <Route path='/panel-weels' element={<PanelWeels />} />
+                <Route path='/buttons' element={<Buttons />} />
+                <Route path='/notifications' element={<Notifications />} />
+                <Route path='/icons' element={<Icons />} />
+                <Route path='/grid' element={<Grid />} />
+                <Route path='/blank' element={<Blank />} />
+
+                {/*<Route path='/signup' element={<SignUp />} />*/}
+
                 {/* private route */}
                 <Route path='/chatroom' element={<PrivateRoute component={<Chatroom />}/>} />
                 <Route path='/:category/write' element={<PrivateRoute component={<Write />}/>} />
                 <Route path='/signup' element={<PrivateRoute component={<SignUp />}/>} />
+                <Route path="/*" element={<NotFound />} />
               </Routes>
             </main>
           </ContextProvider>

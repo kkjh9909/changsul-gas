@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {LikeButton} from "./LikeButton";
 import {useNavigate} from "react-router-dom";
 
-export const PostDetail = ({post, nickname, postId}) => {
+export const PostDetail = ({post, nickname, postId, likes, setLikes, date}) => {
 
 	const navigate = useNavigate();
 
@@ -30,11 +30,15 @@ export const PostDetail = ({post, nickname, postId}) => {
 			<h1>{post.title}</h1>
 			<p className="font-monospace">{post.author}</p>
 			<div>
-				<p className="font-monospace">{post.date}</p>
+				<p className="font-monospace">{date}</p>
 			</div>
 			<hr/>
 			<div dangerouslySetInnerHTML={{ __html: post.content }} style={{minHeight: '500px'}}></div>
-			<LikeButton />
+			<LikeButton
+				postId={postId}
+				likes={likes}
+				setLikes={setLikes}
+			/>
 
 			{/*로그인 한 회원이면 수정/삭제 버튼 보여주기*/}
 			{
