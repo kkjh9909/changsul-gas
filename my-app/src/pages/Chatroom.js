@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, {useEffect, useRef, useState} from "react";
 import Clock from 'react-live-clock';
-import { useLocation } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import io from "socket.io-client";
 import jwt_decode from "jwt-decode";
 import {Chat} from "../components/chat/Chat";
 
 export const Chatroom = () => {
+
+	const navigate = useNavigate();
+
 	const {state} = useLocation();
 	const [message, setMessage] = useState("");
 	const [messageList, setMessageList] = useState([]);
@@ -20,7 +23,7 @@ export const Chatroom = () => {
 			sendMessage()
 	}
 
-	async function sendMessage() {
+	function sendMessage() {
 		if(ws.current && message !== '') {
 			ws.current.send(message)
 			console.log("sendMessage", message);
@@ -58,6 +61,11 @@ export const Chatroom = () => {
 
 			ws.current.onmessage = (event) => {
 				console.log("receive message: ", event);
+				const split = event.data.split(":");
+				if(split[0] === "400") {
+					alert(split[1]);
+					navigate('/');
+				}
 			}
 		}
 
