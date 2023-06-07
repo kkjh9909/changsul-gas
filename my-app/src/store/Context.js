@@ -19,8 +19,8 @@ const ContextProvider = ({children}) => {
 
 			eventSource.onmessage = async (event) => {
 				const res = await event.data;
-
-				console.log(res);
+				setNotification([...notification, res]);
+				console.log(notification);
 			}
 
 			eventSource.onerror = (event) => {
@@ -37,7 +37,7 @@ const ContextProvider = ({children}) => {
 	}
 
 	return (
-		<Context.Provider value={{isLogin, setIsLogin}}>
+		<Context.Provider value={{isLogin, setIsLogin, logout}}>
 			{children}
 		</Context.Provider>
 	)
