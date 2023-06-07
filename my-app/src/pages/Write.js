@@ -5,6 +5,8 @@ import {useParams} from "react-router-dom";
 
 export const Write = () => {
 
+	document.title="글 작성하기"
+
 	const [title, setTitle] = useState("");
 
 	const category = useParams();

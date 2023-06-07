@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import axios, {post} from "axios";
 import Nav from "../Nav";
 import {Link, NavLink, useNavigate} from "react-router-dom";
@@ -7,10 +7,12 @@ import './tables.css'
 import {Search} from "./Search";
 import Pagination from "react-js-pagination";
 import {camelCase} from "lodash";
+import {Context} from "../../store/Context";
 
 export const Tables = ({title, category}) => {
 
     const navigate = useNavigate();
+    const { calculateDate } = useContext(Context);
 
     const [posts, setPosts] = useState([]);
     const [type, setType] = useState("title");
@@ -80,7 +82,7 @@ export const Tables = ({title, category}) => {
                                 <td>{item.id}</td>
                                 <td>{item.title}</td>
                                 <td>{item.author}</td>
-                                <td>{item.date}</td>
+                                <td>{calculateDate(item.date)}</td>
                                 <td>{item.likes}</td>
                           </tr>
                       ))

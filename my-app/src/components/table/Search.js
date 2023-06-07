@@ -7,13 +7,12 @@ export const Search = ({type, setType, setQuery}) => {
 
 	const debounceSearch = debounce(async (query) => {
 		try {
-			console.log(query);
 			setQuery(query);
 		}
 		catch(err) {
 			console.log('search err ', err);
 		}
-	}, 500);
+	}, 200);
 
 	const handleInput = (event) => {
 		debounceSearch(event.target.value);
@@ -21,7 +20,6 @@ export const Search = ({type, setType, setQuery}) => {
 
 	function handleDropdownClick(event) {
 		setType(event.target.value)
-		console.log(event.target.value);
 	}
 
 	return (

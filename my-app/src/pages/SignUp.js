@@ -5,6 +5,8 @@ import {Context} from "../store/Context";
 
 export const SignUp = () => {
 
+	document.title = "회원 가입"
+
 	const { setIsLogin } = useContext(Context);
 
 	const location = useLocation();

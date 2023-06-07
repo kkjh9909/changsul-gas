@@ -8,6 +8,8 @@ import {Chat} from "../components/chat/Chat";
 
 export const Chatroom = () => {
 
+	document.title = "채팅방"
+
 	const navigate = useNavigate();
 
 	const {state} = useLocation();
@@ -39,10 +41,6 @@ export const Chatroom = () => {
 
 	useEffect(() => {
 		ws.current = new WebSocket(`ws://34.215.66.235:8000/chat/${my}/${state}`)
-
-		console.log("state", state);
-		console.log("my", my);
-		console.log("myname", myName);
 
 		async function getMessageList() {
 			const res = await axios.get(`http://34.215.66.235:8000/prev-chat/${state}`, {

@@ -5,6 +5,9 @@ import { faWonSign, faPercent } from '@fortawesome/free-solid-svg-icons';
 class Dashboard extends Component {
 
   render() {
+    
+    document.title="대시 보드"
+    
     return (
         <div id="page-wrapper">
           <div className="row">
