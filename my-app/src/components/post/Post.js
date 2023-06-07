@@ -19,9 +19,11 @@ export const Post = () => {
 			.then(res => {
 				setPost(res.data.writing)
 				setComments(res.data.comments)
-				const token = localStorage.getItem('token');
-				const payload = jwt_decode(token);
-				setNickname(payload.nickname)
+				if(localStorage.getItem('token')) {
+					const token = localStorage.getItem('token');
+					const payload = jwt_decode(token);
+					setNickname(payload.nickname)
+				}
 			})
 	}, [])
 
