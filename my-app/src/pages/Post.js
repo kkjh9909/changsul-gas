@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { useParams } from 'react-router-dom'
+import {useLocation, useParams} from 'react-router-dom'
 import axios from "axios";
 import {CommentList} from "../components/post/CommentList";
 import {CommentWrite} from "../components/post/CommentWrite";
@@ -9,6 +9,8 @@ import jwt_decode from 'jwt-decode'
 import {Context} from "../store/Context";
 
 export const Post = () => {
+
+	const location = useLocation();
 
 	const { id } = useParams();
 	const { calculateDate } = useContext(Context);
@@ -34,7 +36,7 @@ export const Post = () => {
 					setNickname(payload.nickname)
 				}
 			})
-	}, [likes, post])
+	}, [likes, location])
 
 	return (
 		<div id="page-wrapper">
