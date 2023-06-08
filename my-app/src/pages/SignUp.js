@@ -27,7 +27,6 @@ export const SignUp = () => {
 					Authorization: `Bearer ${location.state.token}`
 				}
 			})
-			console.log('signup ', res)
 			window.localStorage.setItem('token', res.data.access_token);
 			setIsLogin(true);
 			navigate('/');

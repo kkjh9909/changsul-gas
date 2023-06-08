@@ -26,6 +26,15 @@ export const PostWrite = ({title, category}) => {
 
 	const handleWrite =  async () => {
 		try {
+			if(title === "") {
+				alert("제목은 빈칸 X");
+				return;
+			}
+			else if(body === "") {
+				alert("내용은 빈칸 X");
+				return;
+			}
+
 			const res = await axios.post(`http://34.215.66.235:8000/post`, {
 				"title": title,
 				"content": body,

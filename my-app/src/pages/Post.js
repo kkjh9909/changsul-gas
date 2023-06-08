@@ -24,9 +24,9 @@ export const Post = () => {
 	useEffect(() => {
 		axios.get(`http://34.215.66.235:8000/post?id=${id}`)
 			.then(res => {
-				setPost(res.data.writing)
+				setPost(res.data.writing);
 				setLikes(res.data.writing.likes);
-				setComments(res.data.comments)
+				setComments(res.data.comments);
 				setDate(calculateDate(res.data.writing.date));
 				if(localStorage.getItem('token')) {
 					const token = localStorage.getItem('token');
@@ -34,7 +34,7 @@ export const Post = () => {
 					setNickname(payload.nickname)
 				}
 			})
-	}, [likes])
+	}, [likes, post])
 
 	return (
 		<div id="page-wrapper">
@@ -46,8 +46,14 @@ export const Post = () => {
 				setLikes={setLikes}
 				date={date}
 			/>
-			<CommentWrite postId={id}/>
-			<CommentList comments={comments}/>
+			<CommentWrite
+				postId={id}
+				comments={comments}
+			 	setComments={setComments}
+			/>
+			<CommentList
+				comments={comments}
+			/>
 		</div>
 	)
 }

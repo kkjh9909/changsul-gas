@@ -27,14 +27,14 @@ export const Chatroom = () => {
 
 	function sendMessage() {
 		if(ws.current && message !== '') {
-			ws.current.send(message)
-			console.log("sendMessage", message);
+			const date = new Date();
+			const send_msg = message + '|' + date.toLocaleString()
+			ws.current.send(send_msg)
 			setMessageList([...messageList, {
 				"sender": myName,
 				"message": message,
-				"time": new Date(),
+				"time": date,
 			}])
-			console.log('list', messageList)
 			setMessage("");
 		}
 	}
@@ -48,22 +48,47 @@ export const Chatroom = () => {
 					"Authorization": "Bearer " + localStorage.getItem("token")
 				}
 			})
-			console.log("getMessageList", res);
+
+			res.data.forEach(data => {
+				data.time = new Date(data.time).toLocaleString('ko-KR', {
+					year: 'numeric',
+					month: 'numeric',
+					day: 'numeric',
+					hour: 'numeric',
+					minute: 'numeric',
+					second: 'numeric',
+					hour12: true,
+				});
+			})
+
 			setMessageList(res.data);
 		}
 
 		async function connectSocket() {
 			ws.current.onopen = () => {
-				console.log("connect success");
 			}
 
 			ws.current.onmessage = (event) => {
-				console.log("receive message: ", event);
+
 				const split = event.data.split(":");
 				if(split[0] === "400") {
 					alert(split[1]);
 					navigate('/');
 				}
+				else if (split[0] == "200") {
+					return;
+				}
+
+				const sender = split[0]
+				const payload = split.slice(1).join(":").split("_")
+				const message = payload[0]
+				const sendtime = payload[1]
+
+				setMessageList(messageList => [...messageList, {
+					"sender": sender,
+					"message": message,
+					"time": sendtime
+				}])
 			}
 		}
 
@@ -77,7 +102,6 @@ export const Chatroom = () => {
 
 	const handleWrite = (e) => {
 		setMessage(e.target.value)
-		console.log(e.target.value)
 	}
 
 	return (

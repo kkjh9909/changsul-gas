@@ -19,8 +19,25 @@ const ContextProvider = ({children}) => {
 
 			eventSource.onmessage = async (event) => {
 				const res = await event.data;
-				setNotification([...notification, res]);
-				console.log(notification);
+				let temp, parsed;
+				parsed = res.split(':');
+				const type = parsed[0]
+				parsed = parsed[1].replace("\n\n", "").split("_");
+				if (type === "chat" || type === "comment") {
+					try {
+						temp = localStorage.getItem(type);
+						temp = JSON.parse(temp);
+						temp[parsed[0]] = parsed.slice(1)
+					}
+					catch {
+						temp = {}
+						temp[parsed[0]] = parsed.slice(1)
+					}
+					finally {
+						localStorage.setItem(type, JSON.stringify(temp))
+					}
+				}
+
 			}
 
 			eventSource.onerror = (event) => {

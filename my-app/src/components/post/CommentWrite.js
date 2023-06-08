@@ -3,7 +3,7 @@ import {useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
-export const CommentWrite = ({postId}) => {
+export const CommentWrite = ({postId, comments, setComments}) => {
 
 	const navigate = useNavigate();
 
@@ -17,6 +17,10 @@ export const CommentWrite = ({postId}) => {
 
 	const handleWrite = async () => {
 		try {
+			if(comment === "") {
+				alert("댓글은 빈칸 안돼")
+				return;
+			}
 			const res = await axios.post('http://34.215.66.235:8000/comment', {
 				"post_id": postId,
 				"content": comment,
@@ -41,6 +45,7 @@ export const CommentWrite = ({postId}) => {
 				rows = {rows}
 				onChange = {handleChange}
 				style={{resize: 'none'}}
+				value={comment}
 			/>
 			<button className="btn btn-primary" onClick={handleWrite}>작성하기</button>
 		</div>

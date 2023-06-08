@@ -1,7 +1,16 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import './Chat.css'
 
 export const Chat = ({messages, myname}) => {
+	const containerRef = useRef(null);
+
+	useEffect(() => {
+		if (containerRef.current) {
+			const container = containerRef.current;
+			container.scrollTop = container.scrollHeight;
+		}
+	}, [messages]);
+
 	return (
 		<div className="chat-background">
 			{messages.length > 0 ? (

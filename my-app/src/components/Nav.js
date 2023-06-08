@@ -1,4 +1,4 @@
-import React, {Component, useContext} from 'react';
+import React, {Component, useContext, useEffect, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faEnvelope,
@@ -19,11 +19,15 @@ import {
 // import { onLogout } from '../App.js';
 import {Link, useNavigate} from "react-router-dom";
 import {Context} from "../store/Context";
+import jwt_decode from "jwt-decode";
 
 export const Nav = () => {
 
     const navigate = useNavigate();
     const {isLogin, logout} = useContext(Context);
+
+    const chats = localStorage.getItem("chat");
+    const comments = localStorage.getItem("comment");
 
     return (
         <nav className="navbar navbar-default navbar-static-top" style={{marginBottom: 0}}>
@@ -44,48 +48,25 @@ export const Nav = () => {
               <FontAwesomeIcon icon={faEnvelope} /> <FontAwesomeIcon icon={faCaretDown} />
             </a>
             <ul className="dropdown-menu dropdown-messages">
-              <li>
-                <a href="#!">
-                  <div>
-                    <strong>John Smith</strong>
-                    <span className="pull-right text-muted">
-                      <em>Yesterday</em>
-                    </span>
-                  </div>
-                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                </a>
-              </li>
-              <li className="divider"></li>
-              <li>
-                <a href="#!">
-                  <div>
-                    <strong>John Smith</strong>
-                    <span className="pull-right text-muted">
-                      <em>Yesterday</em>
-                    </span>
-                  </div>
-                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                </a>
-              </li>
-              <li className="divider"></li>
-              <li>
-                <a href="#!">
-                  <div>
-                    <strong>John Smith</strong>
-                    <span className="pull-right text-muted">
-                      <em>Yesterday</em>
-                    </span>
-                  </div>
-                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                </a>
-              </li>
-              <li className="divider"></li>
-              <li>
-                <a className="text-center" href="#!">
-                  <strong>모든 채팅 보기</strong>
-                  <FontAwesomeIcon icon={faAngleRight} />
-                </a>
-              </li>
+              {
+                Object.entries(JSON.parse(chats)).map((chat) => {
+
+                  const my = jwt_decode(localStorage.getItem('token')).uid;
+                  const id = chat[0].split("-");
+                  const you = my === id[0] ? id[1] : id[0];
+
+                  return (
+                    <React.Fragment>
+                      <li>
+                        <Link to={`/chatroom`} state={you}>
+                          <FontAwesomeIcon icon={faComment}/> 새로운 채팅
+                          <span className="pull-right text-muted small">{chat[1][1]}</span>
+                        </Link>
+                      </li>
+                      <div className="divider"></div>
+                    </React.Fragment>
+                  )})
+              }
             </ul>
             {/* <!-- /.dropdown-messages --> */}
           </li>
@@ -95,30 +76,20 @@ export const Nav = () => {
               <FontAwesomeIcon icon={faBell} /> <FontAwesomeIcon icon={faCaretDown} />
             </a>
             <ul className="dropdown-menu dropdown-alerts">
-              <li>
-                <a href="#!">
-                  <div>
-                  <FontAwesomeIcon icon={faComment} /> 새로운 댓글
-                    <span className="pull-right text-muted small">5 minutes ago</span>
-                  </div>
-                </a>
-              </li>
-              <li className="divider"></li>
-              <li>
-                <a href="#!">
-                  <div>
-                  <FontAwesomeIcon icon={faScroll} /> 새로운 게시글
-                    <span className="pull-right text-muted small">12 minutes ago</span>
-                  </div>
-                </a>
-              </li>
-              <li className="divider"></li>
-              <li>
-                <a className="text-center" href="#!">
-                  <strong>모든 알람 보기</strong>
-                  <FontAwesomeIcon icon={faAngleRight} />
-                </a>
-              </li>
+              {
+                Object.entries(JSON.parse(comments)).map((key, idx) => {
+                  return (
+                    <React.Fragment>
+                      <li>
+                        <Link to={`/post/${key[0]}`}>
+                          <FontAwesomeIcon icon={faScroll}/> 새로운 댓글
+                          <span className="pull-right text-muted small">{key[1][1]}</span>
+                        </Link>
+                      </li>
+                      <div className="divider"></div>
+                    </React.Fragment>
+                  )})
+              }
             </ul>
             {/* <!-- /.dropdown-alerts --> */}
           </li>
