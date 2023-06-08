@@ -49,23 +49,33 @@ export const Nav = () => {
             </a>
             <ul className="dropdown-menu dropdown-messages">
               {
-                Object.entries(JSON.parse(chats)).map((chat) => {
-
+                chats !== null ? (
+                  Object.entries(JSON.parse(chats)).map((chat) => {
+  
                   const my = jwt_decode(localStorage.getItem('token')).uid;
                   const id = chat[0].split("-");
                   const you = my === id[0] ? id[1] : id[0];
-
+  
                   return (
                     <React.Fragment>
+                    <li>
+                    <Link to={`/chatroom`} state={you}>
+                    <FontAwesomeIcon icon={faComment}/> 새로운 채팅
+                    <span className="pull-right text-muted small">{chat[1][1]}</span>
+                    </Link>
+                    </li>
+                    <div className="divider"></div>
+                    </React.Fragment>
+                  )})) : (
+                    <React.Fragment>
                       <li>
-                        <Link to={`/chatroom`} state={you}>
-                          <FontAwesomeIcon icon={faComment}/> 새로운 채팅
-                          <span className="pull-right text-muted small">{chat[1][1]}</span>
+                        <Link>
+                          <FontAwesomeIcon icon={faComment}/> 채팅 알림 없음
                         </Link>
                       </li>
                       <div className="divider"></div>
                     </React.Fragment>
-                  )})
+                )
               }
             </ul>
             {/* <!-- /.dropdown-messages --> */}
@@ -77,6 +87,7 @@ export const Nav = () => {
             </a>
             <ul className="dropdown-menu dropdown-alerts">
               {
+                comments !== null ? (
                 Object.entries(JSON.parse(comments)).map((key, idx) => {
                   return (
                     <React.Fragment>
@@ -88,7 +99,16 @@ export const Nav = () => {
                       </li>
                       <div className="divider"></div>
                     </React.Fragment>
-                  )})
+                  )})) : (
+                      <React.Fragment>
+                        <li>
+                          <Link>
+                            <FontAwesomeIcon icon={faScroll}/> 댓글 알림 없음
+                          </Link>
+                        </li>
+                        <div className="divider"></div>
+                      </React.Fragment>
+                )
               }
             </ul>
             {/* <!-- /.dropdown-alerts --> */}
