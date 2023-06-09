@@ -25,9 +25,12 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
 
     const navigate = useNavigate();
     const {isLogin, logout} = useContext(Context);
-
     const chats = localStorage.getItem("chat");
     const comments = localStorage.getItem("comment");
+
+    useEffect(() => {
+
+    }, [chats, comments])
 
     return (
         <nav className="navbar navbar-default navbar-static-top" style={{marginBottom: 0}}>
@@ -52,7 +55,7 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
             </a>
             <ul className="dropdown-menu dropdown-messages">
               {
-                chats !== null ? (
+                chats !== null && localStorage.getItem('token') ? (
                   Object.entries(JSON.parse(chats)).map((chat) => {
   
                   const my = jwt_decode(localStorage.getItem('token')).uid;
@@ -90,13 +93,13 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
             </a>
             <ul className="dropdown-menu dropdown-alerts">
               {
-                comments !== null ? (
+                comments !== null && localStorage.getItem('token') ? (
                 Object.entries(JSON.parse(comments)).map((key, idx) => {
                   return (
                     <React.Fragment>
                       <li>
                         <Link to={`/post/${key[0]}`}>
-                          <FontAwesomeIcon icon={faScroll}/> 새로운 댓글
+                          <FontAwesomeIcon icon={faScroll}/> {key[1][0]} : 새로운 댓글
                           <span className="pull-right text-muted small">{key[1][1]}</span>
                         </Link>
                       </li>
