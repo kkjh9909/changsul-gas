@@ -16,12 +16,12 @@ import {
   faTable,
   faSignIn
 } from '@fortawesome/free-solid-svg-icons';
-// import { onLogout } from '../App.js';
 import {Link, useNavigate} from "react-router-dom";
 import {Context} from "../store/Context";
 import jwt_decode from "jwt-decode";
+import {BsFillSunFill, BsFillMoonFill} from 'react-icons/bs';
 
-export const Nav = () => {
+export const Nav = ({isDarkMode, toggleDarkMode}) => {
 
     const navigate = useNavigate();
     const {isLogin, logout} = useContext(Context);
@@ -43,6 +43,9 @@ export const Nav = () => {
         {/* <!-- /.navbar-header --> */}
 
         <ul className="nav navbar-top-links navbar-right">
+          <li>
+            <button type="button" onClick={toggleDarkMode} isDarkMode={isDarkMode}>{isDarkMode ? <BsFillSunFill /> : <BsFillMoonFill />}</button>
+          </li>
           <li className="dropdown">
             <a className="dropdown-toggle" data-toggle="dropdown" href="#!">
               <FontAwesomeIcon icon={faEnvelope} /> <FontAwesomeIcon icon={faCaretDown} />
