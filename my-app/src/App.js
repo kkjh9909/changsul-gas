@@ -59,8 +59,8 @@ function App() {
             <Nav isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
             <main role="main">
               <Routes>
-                <Route path='/' element={<Dashboard />} />
-                <Route path='/dashboard' element={<Dashboard />} />
+                <Route path='/' element={<Dashboard showHotboard={true}/>} />
+                <Route path='/dashboard' element={<Dashboard showHotboard={false}/>} />
 
 
                 <Route path='/login' element={<Login />} />

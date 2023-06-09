@@ -12,7 +12,10 @@ export const Chat = ({messages, myname}) => {
 	}, [messages]);
 
 	return (
-		<div className="chat-background">
+		<div className="chat-background" style={{
+				overflow: 'auto',
+				height:  '80vh'
+			}} ref={containerRef}>
 			{messages.length > 0 ? (
 				messages.map((message) => (
 					<div key={message.id}>

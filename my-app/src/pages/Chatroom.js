@@ -95,7 +95,7 @@ export const Chatroom = () => {
 		getMessageList();
 		connectSocket();
 
-		return () => {
+		return async () => {
 			ws.current.close();
 		}
 	},[])
