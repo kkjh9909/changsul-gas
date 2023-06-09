@@ -22,7 +22,6 @@ export const HotBoard = () => {
         requestPosts();
     }, [])
 
-
     return (
         <div id="page-wrapper">
             <div className="panel panel-default">
@@ -53,15 +52,6 @@ export const HotBoard = () => {
                             }
                         </tbody>
                     </table>
-                    {/* <div style={{width: '100%', textAlign:'center'}}>
-                        <Pagination
-                        activePage={page + 1}
-                        itemsCountPerPage={20}
-                        totalItemsCount={count}
-                        pageRangeDisplayed={5}
-                        onChange={handlePageChange}
-                        />
-                    </div> */}
                 </div>
             </div>
         </div>
