@@ -27,3 +27,4 @@ yarn-error.log*
 Dockerfile
 *.img
 docker-compose.yml
+nginx.conf
