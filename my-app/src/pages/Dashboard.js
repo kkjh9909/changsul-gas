@@ -82,6 +82,7 @@ class Dashboard extends Component {
             </div>
           </div>
           {
+            // Hotboard를 보여줄지 보여주지 않을지 결정
             showHotboard ? <HotBoard /> : <></>
           }
         </div>
