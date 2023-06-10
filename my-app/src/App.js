@@ -49,10 +49,11 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("mode") === "true" ? true : false);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
+    window.localStorage.setItem("mode", String(!isDarkMode));
   }
     return (
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
