@@ -31,17 +31,20 @@ import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
 
 const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${(props) => props.theme.bgcolor};
+  body, #page-wrapper, .navbar, .sidebar, .dropdown-menu, .form-control {
+    background-color: ${(props) => props.theme.bgColor};
   }
-  #page-wrapper {
-    background-color: ${(props) => props.theme.bgcolor};
+
+  .nav>li>a:hover, .nav>li>a:focus {
+    background-color: ${(props) => props.theme.hoverColor};
   }
-  .navbar {
-    background-color: ${(props) => props.theme.bgcolor};
+
+  .nav>li>a {
+    color: ${(props) => props.theme.nTextColor};
   }
-  .sidebar {
-    background-color: ${(props) => props.theme.bgcolor};
+
+  h1, h2, h3, h4, h5, h6, .navbar-brand {
+    color: ${(props) => props.theme.textColor};
   }
 `;
 
