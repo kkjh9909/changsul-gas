@@ -17,25 +17,9 @@ export const Login = () => {
 							<h3 className="panel-title">Please Sign In</h3>
 						</div>
 						<div className="panel-body">
-							<form>
-								<fieldset>
-									<div className="form-group">
-										<input className="form-control" placeholder="E-mail" name="email" type="email" autoFocus />
-									</div>
-									<div className="form-group">
-										<input className="form-control" placeholder="Password" name="password" type="password" />
-									</div>
-									<div className="checkbox">
-										<label>
-											<input name="remember" type="checkbox" value="Remember Me" />Remember Me
-										</label>
-									</div>
-									{/* <!-- Change this to a button or input when using this as a form --> */}
-									<div style={{textAlign: 'center'}}>
-										<a href={KAKAO_AUTH_URI}><img src="kakao_login_medium_narrow.png" alt="kakao"/></a>
-									</div>
-								</fieldset>
-							</form>
+							<div style={{textAlign: 'center'}}>
+								<a href={KAKAO_AUTH_URI}><img src="kakao_login_medium_narrow.png" alt="kakao"/></a>
+							</div>
 						</div>
 					</div>
 				</div>

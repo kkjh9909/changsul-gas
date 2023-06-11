@@ -31,20 +31,24 @@ import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
 
 const GlobalStyle = createGlobalStyle`
-  body, #page-wrapper, .navbar, .sidebar, .dropdown-menu, .form-control {
+  body, #page-wrapper, .navbar, .sidebar, .dropdown-menu, .form-control, .panel, .pagination>li>a {
     background-color: ${(props) => props.theme.bgColor};
   }
 
-  .nav>li>a:hover, .nav>li>a:focus {
+  .nav>li>a:hover, .nav>li>a:focus, .pagination>li>a:hover, .pagination>li>a:focus, .table-hover>tbody>tr:hover, .open>a {
     background-color: ${(props) => props.theme.hoverColor};
   }
 
-  .nav>li>a {
+  .nav>li>a, .pagination>li>a, .pagination>li>a:hover {
     color: ${(props) => props.theme.nTextColor};
   }
 
-  h1, h2, h3, h4, h5, h6, .navbar-brand {
+  a, h1, h2, h3, h4, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default {
     color: ${(props) => props.theme.textColor};
+  }
+
+  tr, .nav>li>button {
+    background-color: ${(props) => props.theme.tableColor};
   }
 `;
 
