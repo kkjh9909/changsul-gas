@@ -23,7 +23,10 @@ export const HotBoard = () => {
     }, [])
 
     return (
-        <div id="page-wrapper">
+        <div>
+            <div className="col-lg-12">
+              <h1 className="page-header">인기 게시글</h1>
+            </div>
             <div className="panel panel-default">
                 <div className="panel-body">
                     <table width="100%" className="table table-striped table-bordered table-hover">
