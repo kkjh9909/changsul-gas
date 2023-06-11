@@ -98,7 +98,7 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
                     <React.Fragment>
                       <li>
                         <Link to={`/post/${key[0]}`}>
-                          <span><FontAwesomeIcon icon={faScroll}/> {key[1][0].length > 10 ? key[1][0].slice(0, 10) + '...' : key[1][0]} : 새로운 댓글</span>
+                          <span><FontAwesomeIcon icon={faScroll}/> {key[1][0].length > 5 ? key[1][0].slice(0, 5) + '...' : key[1][0]} : 새로운 댓글</span>
                           <span className="pull-right text-muted small">{key[1][1]}</span>
                         </Link>
                       </li>
