@@ -7,7 +7,6 @@ class Dashboard extends Component {
 
   render() {
     const showHotboard = this.props.showHotboard;
-    console.log(showHotboard);
     document.title="대시 보드"
     
     return (
