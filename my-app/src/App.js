@@ -91,8 +91,12 @@ function App() {
             <Nav isdarkmode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
             <main role="main">
               <Routes>
-                <Route path='/' element={<Dashboard />} />
-                <Route path='/dashboard' element={<Dashboard />} />
+                {/* 
+                  특정 이상의 좋아요 개수를 가진 글들을 모은 테이블 보여줌
+                  Dashboard 페이지에서 showHotboard 조건에 따라 해당 테이블을 보여줄지 보여주지 않을지 선택
+                */}
+                <Route path='/' element={<Dashboard showHotboard={true}/>} />
+                <Route path='/dashboard' element={<Dashboard showHotboard={false}/>} />
 
 
                 <Route path='/login' element={<Login />} />
