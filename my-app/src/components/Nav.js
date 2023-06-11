@@ -57,7 +57,6 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
               {
                 chats !== null && localStorage.getItem('token') ? (
                   Object.entries(JSON.parse(chats)).map((chat) => {
-  
                   const my = jwt_decode(localStorage.getItem('token')).uid;
                   const id = chat[0].split("-");
                   const you = my === id[0] ? id[1] : id[0];
