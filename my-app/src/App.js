@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {BrowserRouter, Route, Router, Routes} from 'react-router-dom';
 import './App.css';
 import {Nav} from './components/Nav';
@@ -27,14 +27,36 @@ import {Chatroom} from "./pages/Chatroom";
 import PrivateRoute from "./pages/PrivateRoute";
 import MorrisChart from "./pages/MorrisChart";
 import {NotFound} from "./pages/NotFound";
+import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
+import {darkTheme, lightTheme} from './components/Theme';
 
-class App extends Component {
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${(props) => props.theme.bgcolor};
+  }
+  #page-wrapper {
+    background-color: ${(props) => props.theme.bgcolor};
+  }
+  .navbar {
+    background-color: ${(props) => props.theme.bgcolor};
+  }
+  .sidebar {
+    background-color: ${(props) => props.theme.bgcolor};
+  }
+`;
 
-  render() {
+function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode((prev) => !prev);
+  }
     return (
+      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        <GlobalStyle />
         <div id="wrapper">
           <ContextProvider>
-            <Nav />
+            <Nav isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
             <main role="main">
               <Routes>
                 <Route path='/' element={<Dashboard />} />
@@ -69,12 +91,12 @@ class App extends Component {
                 <Route path='/:category/write' element={<PrivateRoute component={<Write />}/>} />
                 <Route path='/signup' element={<PrivateRoute component={<SignUp />}/>} />
                 <Route path="/*" element={<NotFound />} />
-              </Routes>
-            </main>
-          </ContextProvider>
+            </Routes>
+          </main>
+        </ContextProvider>
         </div>
+      </ThemeProvider>
     );
-  }
 }
 
 export default App;
