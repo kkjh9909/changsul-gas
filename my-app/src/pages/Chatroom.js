@@ -98,7 +98,7 @@ export const Chatroom = () => {
 		return () => {
 			ws.current.close();
 		}
-	},[])
+	},[state])
 
 	const handleWrite = (e) => {
 		setMessage(e.target.value)

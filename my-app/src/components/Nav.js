@@ -65,8 +65,8 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
                     <React.Fragment>
                     <li>
                     <Link to={`/chatroom`} state={you}>
-                    <FontAwesomeIcon icon={faComment}/> 새로운 채팅
-                    <span className="pull-right text-muted small">{chat[1][1]}</span>
+                        <FontAwesomeIcon icon={faComment}/> {chat[0].length > 10 ? chat[0].slice(0, 10) + '...' : chat[0]} : 새로운 채팅
+                        <span className="pull-right text-muted small">{chat[1][1]}</span>
                     </Link>
                     </li>
                     <div className="divider"></div>
@@ -98,7 +98,7 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
                     <React.Fragment>
                       <li>
                         <Link to={`/post/${key[0]}`}>
-                          <FontAwesomeIcon icon={faScroll}/> {key[1][0]} : 새로운 댓글
+                          <span><FontAwesomeIcon icon={faScroll}/> {key[1][0].length > 10 ? key[1][0].slice(0, 10) + '...' : key[1][0]} : 새로운 댓글</span>
                           <span className="pull-right text-muted small">{key[1][1]}</span>
                         </Link>
                       </li>
