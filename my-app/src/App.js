@@ -64,7 +64,7 @@ function App() {
         <GlobalStyle />
         <div id="wrapper">
           <ContextProvider>
-            <Nav isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
+            <Nav isdarkmode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
             <main role="main">
               <Routes>
                 <Route path='/' element={<Dashboard />} />
