@@ -50,6 +50,16 @@ const GlobalStyle = createGlobalStyle`
   tr, .nav>li>button {
     background-color: ${(props) => props.theme.tableColor};
   }
+
+  .your-chat-message {
+    background-color: ${(props) => props.theme.yChatColor};
+    border: solid ${(props) => props.theme.borderColor} 1px;
+  }
+
+  .my-chat-message {
+    background-color: ${(props) => props.theme.mChatColor};
+    border: solid ${(props) => props.theme.borderColor} 1px;
+  }
 `;
 
 function App() {
