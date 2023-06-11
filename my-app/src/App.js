@@ -31,7 +31,7 @@ import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
 
 const GlobalStyle = createGlobalStyle`
-  body, #page-wrapper, .navbar, .sidebar, .dropdown-menu, .form-control, .panel, .pagination>li>a {
+  body, #page-wrapper, .navbar, .sidebar, .dropdown-menu, .form-control, .panel, .pagination>li>a, .panel-footer, .chat-background {
     background-color: ${(props) => props.theme.bgColor};
   }
 
@@ -43,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.nTextColor};
   }
 
-  a, h1, h2, h3, h4, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default {
+  a, h1, h2, h3, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control {
     color: ${(props) => props.theme.textColor};
   }
 

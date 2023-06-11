@@ -1,6 +1,5 @@
 
 .chat-background {
-    background-color: #9bbbd4;
     flex-direction: column;
 }
 
@@ -46,7 +45,7 @@
 }
 
 .time-stamp {
-    color: #AAAAAA;
+    color: #696969;
 }
 
 .text-area {

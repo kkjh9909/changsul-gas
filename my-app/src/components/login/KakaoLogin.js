@@ -21,6 +21,7 @@ export const KakaoLogin = () => {
 					navigate('/');
 				}
 				else {
+					localStorage.setItem("token", accessToken);
 					navigate(`/signup`, {state: {token : accessToken}});
 				}
 			})
