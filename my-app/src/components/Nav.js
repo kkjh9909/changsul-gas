@@ -25,9 +25,12 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
 
     const navigate = useNavigate();
     const {isLogin, logout} = useContext(Context);
-
     const chats = localStorage.getItem("chat");
     const comments = localStorage.getItem("comment");
+
+    useEffect(() => {
+
+    }, [chats, comments])
 
     return (
         <nav className="navbar navbar-default navbar-static-top" style={{marginBottom: 0}}>
@@ -44,7 +47,7 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
 
         <ul className="nav navbar-top-links navbar-right">
           <li>
-            <button type="button" onClick={toggleDarkMode} isDarkMode={isDarkMode}>{isDarkMode ? <BsFillSunFill /> : <BsFillMoonFill />}</button>
+            <button type="button" onClick={toggleDarkMode} isdarkmode={isDarkMode}>{isDarkMode ? <BsFillSunFill /> : <BsFillMoonFill />}</button>
           </li>
           <li className="dropdown">
             <a className="dropdown-toggle" data-toggle="dropdown" href="#!">
@@ -52,9 +55,8 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
             </a>
             <ul className="dropdown-menu dropdown-messages">
               {
-                chats !== null ? (
+                chats !== null && localStorage.getItem('token') ? (
                   Object.entries(JSON.parse(chats)).map((chat) => {
-  
                   const my = jwt_decode(localStorage.getItem('token')).uid;
                   const id = chat[0].split("-");
                   const you = my === id[0] ? id[1] : id[0];
@@ -63,8 +65,8 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
                     <React.Fragment>
                     <li>
                     <Link to={`/chatroom`} state={you}>
-                    <FontAwesomeIcon icon={faComment}/> 새로운 채팅
-                    <span className="pull-right text-muted small">{chat[1][1]}</span>
+                        <FontAwesomeIcon icon={faComment}/> {chat[0].length > 10 ? chat[0].slice(0, 10) + '...' : chat[0]} : 새로운 채팅
+                        <span className="pull-right text-muted small">{chat[1][1]}</span>
                     </Link>
                     </li>
                     <div className="divider"></div>
@@ -90,13 +92,13 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
             </a>
             <ul className="dropdown-menu dropdown-alerts">
               {
-                comments !== null ? (
+                comments !== null && localStorage.getItem('token') ? (
                 Object.entries(JSON.parse(comments)).map((key, idx) => {
                   return (
                     <React.Fragment>
                       <li>
                         <Link to={`/post/${key[0]}`}>
-                          <FontAwesomeIcon icon={faScroll}/> 새로운 댓글
+                          <span><FontAwesomeIcon icon={faScroll}/> {key[1][0].length > 10 ? key[1][0].slice(0, 10) + '...' : key[1][0]} : 새로운 댓글</span>
                           <span className="pull-right text-muted small">{key[1][1]}</span>
                         </Link>
                       </li>
@@ -152,7 +154,7 @@ export const Nav = ({isDarkMode, toggleDarkMode}) => {
                 <ul className="nav" id="side-menu">
                   <li className="sidebar-search">
                     <div className="input-group custom-search-form">
-                      <input type="text" className="form-control" placeholder="Search..." />
+                      <input type="text" className="form-control" placeholder="검색어를 입력하세요" />
                       <span className="input-group-btn">
                     <button className="btn btn-default" type="button">
                     <FontAwesomeIcon icon={faSearch} />

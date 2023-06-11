@@ -31,36 +31,58 @@ import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
 import {darkTheme, lightTheme} from './components/Theme';
 
 const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${(props) => props.theme.bgcolor};
+  body, #page-wrapper, .navbar, .sidebar, .dropdown-menu, .form-control, .panel, .pagination>li>a, .panel-footer, .chat-background {
+    background-color: ${(props) => props.theme.bgColor};
   }
-  #page-wrapper {
-    background-color: ${(props) => props.theme.bgcolor};
+
+  .nav>li>a:hover, .nav>li>a:focus, .pagination>li>a:hover, .pagination>li>a:focus, .table-hover>tbody>tr:hover, .open>a {
+    background-color: ${(props) => props.theme.hoverColor};
   }
-  .navbar {
-    background-color: ${(props) => props.theme.bgcolor};
+
+  .nav>li>a, .pagination>li>a, .pagination>li>a:hover {
+    color: ${(props) => props.theme.nTextColor};
   }
-  .sidebar {
-    background-color: ${(props) => props.theme.bgcolor};
+
+  a, h1, h2, h3, h5, h6, .navbar-brand, p, tr, .dropdown-menu>li>a, .navbar-default, time, .form-control {
+    color: ${(props) => props.theme.textColor};
+  }
+
+  tr, .nav>li>button {
+    background-color: ${(props) => props.theme.tableColor};
+  }
+
+  .your-chat-message {
+    background-color: ${(props) => props.theme.yChatColor};
+    border: solid ${(props) => props.theme.borderColor} 1px;
+  }
+
+  .my-chat-message {
+    background-color: ${(props) => props.theme.mChatColor};
+    border: solid ${(props) => props.theme.borderColor} 1px;
   }
 `;
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("mode") === "true" ? true : false);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
+    window.localStorage.setItem("mode", String(!isDarkMode));
   }
     return (
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
         <GlobalStyle />
         <div id="wrapper">
           <ContextProvider>
-            <Nav isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
+            <Nav isdarkmode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
             <main role="main">
               <Routes>
-                <Route path='/' element={<Dashboard />} />
-                <Route path='/dashboard' element={<Dashboard />} />
+                {/* 
+                  특정 이상의 좋아요 개수를 가진 글들을 모은 테이블 보여줌
+                  Dashboard 페이지에서 showHotboard 조건에 따라 해당 테이블을 보여줄지 보여주지 않을지 선택
+                */}
+                <Route path='/' element={<Dashboard showHotboard={true}/>} />
+                <Route path='/dashboard' element={<Dashboard showHotboard={false}/>} />
 
 
                 <Route path='/login' element={<Login />} />
